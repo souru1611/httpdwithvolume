@@ -14,8 +14,8 @@ pipeline {
 			          	sh "docker run -d httpd "
 			          	sh "docker volume create vol1"
 				        sh "docker cp /mnt/data-1/index.html /var/lib/docker/volumes/vol1/_data "
-				        sh "docker run -itdp 8080:80 -v vol1:/usr/local/apache2/htdocs --name server-1 httpd "
-					sh "docker exec server-1 chmod -R 777 /usr/local/apache2/htdocs/index.html "
+				        sh "docker run -itdp 8081:80 -v vol1:/usr/local/apache2/htdocs --name server-1 httpd "
+					sh "docker exec server-1 chmod -R 777 /usr/l1cal/apache2/htdocs/index.html "
 				
 		    		}				
 
