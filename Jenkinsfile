@@ -1,23 +1,23 @@
 pipeline {
-	  agent {
+	   agent {
 		  label {
 			          label "built-in" 
-			          customWorkspace "/mnt/data-0" 
+			          customWorkspace "/mnt/data-2" 
 		  }	
-  	}
+  	   }
 
 	  stages {
 
 		    stage ("stage-1") {
 
-			    steps {	
+			   	 steps {	
 			          	sh "docker run -d httpd "
-			          	sh "docker volume create vol0"
-				          sh "docker cp /mnt/data-0 /var/lib/docker/volumes/vol0/_data
-				          sh "docker run -itdp 8080:80 -v vol1:/usr/local/apache2/htdocs --name server-0 httpd "
+			          	sh "docker volume create vol2"
+				        sh "docker cp /mnt/data-2/index.html /var/lib/docker/volumes/vol0/_data "
+				        sh "docker run -itdp 8082:80 -v vol1:/usr/local/apache2/htdocs --name server-2 httpd "
+					sh "docker exec server-2 chmod -R 777 /usr/local/apache2/htdocs/index.html "
 				
-				
-		    	}				
+		    		}				
 
 		    }
 
